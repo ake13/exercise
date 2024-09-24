@@ -2,10 +2,13 @@
 
 ## Application building process:
    In order to reduce toiling, boost security and reduce the running container size I decided to split the original Docker file in two different steps:
-      1. Compile the application code using GitHub actions + semantic version and push it to an S3 bucket. 
+   
+   1. Compile the application code using GitHub actions + semantic version and push it to an S3 bucket. 
            The reason behind this is because due to the installation of compilers as root and the different layers it will not only increase the container image size, but is a security risk for a production environment.
-      2. Use a smaller image like: debian:11-slim or debian:12-slim which is 70MB less then ubuntu. Update the container, create a user with low permissions and use the app in the user space (if the app is not using reserved ports). Create a 
+      
+   2. Use a smaller image like: debian:11-slim or debian:12-slim which is 70MB less then ubuntu. Update the container, create a user with low permissions and use the app in the user space (if the app is not using reserved ports). Create a 
            robust app startup. Remove the apt-cache and all of this in with two layers. Build and tag the container using the same version as the app. Scan it for any CVE’s using trivy, load it to a docker registry: Quay, ECR, DockerHub, etc.
+      
    All this process is done with GitHub actions and PR approvals. There is are some GitHub examples I manage to create for the semantic versioning and a list that need to be answered when you create a PR.
 
 
