@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  DOCKER_USERNAME: ake13
+  DOCKER_USERNAME: h0gr3
   REPO: ake13/excercise
 
 jobs:
