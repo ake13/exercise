@@ -5,8 +5,8 @@ on:
       - main
 
 env:
-  DOCKER_USERNAME: h0gr3
-  REPO: h0gr3/excercise
+  DOCKER_USERNAME: ake13
+  REPO: ake13/excercise
 
 jobs:
   docker:
