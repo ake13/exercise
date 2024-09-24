@@ -23,3 +23,4 @@
 
        
 
+![Alt text](images/architecture_EKS_Solution_Architecture.png)
