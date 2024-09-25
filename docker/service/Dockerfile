@@ -8,7 +8,7 @@ RUN apt-get update && \
     contentType="application/x-compressed-tar" \
     dateValue="`date +'%a, %d %b %Y %H:%M:%S %z'`" \
     stringToSign="GET \ 
-    ${contentType} \ 
+    ${contentType} \
     ${dateValue} \
     ${resource}" \ 
     s3Key=xxx \
@@ -18,4 +18,8 @@ RUN apt-get update && \
     -H "Date: ${dateValue}" \
     -H "Content-Type: ${contentType}" \ 
     -H "Authorization: AWS ${s3Key}:${signature}" \ 
-     https://${bucket}.s3.amazonaws.com/${file}
+     https://${bucket}.s3.amazonaws.com/${file} && \
+     mv ${file} /home/myapp && \
+     chown -R myapp:myapp /home/myapp && \
+     nohup /home/myapp/${file}
+
